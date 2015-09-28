@@ -11,3 +11,5 @@ ln -s ~/.vim/vimrc ~/.vimrc
 #3、clone vundle project
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
+#4、install vundle management
+vim +BundleInstall +qall

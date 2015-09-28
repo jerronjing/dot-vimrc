@@ -42,13 +42,15 @@ set smartindent          "智能对齐
 "set whichwrap+=h,l      "使用h,l移动可以跨行
 "set mps+=<:>            "让<>可以使用%跳转`
 
-" Tab键的宽度
+"设置Tab宽度
 set tabstop=4
-
-" 统一缩进为4
-set softtabstop=4
+"设置自动对齐空格数
 set shiftwidth=4
-"用空格代替制表符, To insert space characters whenever the tab key is pressed
+"设置按退格键时可以一次删除4个空格
+set softtabstop=4
+"设置按退格键时可以一次删除4个空格
+set smarttab
+"将Tab键自动转换成空格 真正需要Tab键时使用[Ctrl + V + Tab]
 set expandtab
 
 " 历史记录数
@@ -61,6 +63,19 @@ set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本�
 
 "搜索忽略大小写
 set ignorecase
+
+"设置取消备份 禁止临时文件生成
+set nobackup
+set noswapfile
+
+"检测文件类型
+filetype on
+"针对不同的文件采用不同的缩进方式
+filetype indent on
+"允许插件
+filetype plugin on
+"启动智能补全
+filetype plugin indent on
 
 
 "" ---------------------------------------------------------
