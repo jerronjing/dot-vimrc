@@ -2,9 +2,30 @@ source ~/.vim/bundles.vim
 
 syntax on  "语法高亮
 
+"设置每行的最大字符数，超过的话，将换行
+set textwidth=80
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai    "Auto indent
+set si    "Smart indent
+set wrap  "Wrap lines
+
 "设置标签的切换 shift+j或者k
 noremap <S-k> :tabnext<CR>
 noremap <S-j> :tabpre<CR>
+
+"切换paste与nopaste模式
+set pastetoggle=<F11>
+noremap <F5> :NERDTreeToggle<CR>
+
+"Smart way to move between windows 分屏窗口移动
+"则可以用<C-h,j,k,l>切换到上下左右的窗口中去,就像:
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 set encoding=utf-8
 
@@ -78,13 +99,19 @@ filetype plugin on
 filetype plugin indent on
 
 
+
 "" ---------------------------------------------------------
 " 当新建php文件时候自动添加php头
 "" -----------------------------------------------------------
 autocmd BufNewFile *.php exec ":call PhpComment()"
+" 配置文件.vimrc更改后自动重新载入使设置生效
+autocmd! bufwritepost vimrc source ~/.vimrc 
+autocmd! bufwritepost bundles.vim source ~/.vim/bundles.vim 
 
 " 自动加入注释头
-func PhpComment()
+" 再次加载vimrc时，vim发现函数XXX已经定义了，所以给出提示。要避免这个提示，你在定义XXX函数时需要使用：
+" function! XXX
+func! PhpComment()
     call setline(1,"<?php")
 	call append(line("."), "/**")
     call append(line(".")+1, " * Description ")

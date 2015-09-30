@@ -20,6 +20,34 @@ Bundle 'gmarik/vundle'
 " Bundle 'SuperTab'
 "****************重要说明 End ********************"
 
+
+" 插件安装
+" Syntax ---语法检测
+" need Vim version 7.175 or later
+Bundle 'scrooloose/Syntastic'
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_error_symbol = '✗'
+    let g:synastic_warning_symbol = '⚠'
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_loc_list_height = 5
+    let g:syntastic_enable_highlighting = 0
+    " 多语言语法检查
+    let g:syntastic_javascript_checkers = ['jsl', 'jshint']
+    let g:syntastic_html_checkers=['tidy', 'jshint']
+    let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
+" 代码自动补全
+Bundle 'Valloric/YouCompleteMe'
+    "youcompleteme  默认tab  s-tab 和自动补全冲突
+    let g:ycm_key_list_select_completion=['<C-n>']
+    "let g:ycm_key_list_select_completion = ['<Down>']
+    let g:ycm_key_list_previous_completion=['<C-p>']
+    "let g:ycm_key_list_previous_completion = ['<Up>']
+    let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
+    let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
+    let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
+    let g:ycm_seed_identifiers_with_syntax = 1 "语言关键字补全
+    
 Bundle 'taglist.vim'
 Bundle 'SuperTab'
 Bundle 'vimwiki'
@@ -29,9 +57,12 @@ Bundle 'The-NERD-tree'
 
 "PowerLine插件 状态栏增强展示
 Bundle 'Lokaltog/vim-powerline'
-"vim有一个状态栏 加上powline则有两个状态栏
-set laststatus=2
-
+   let g:Powerline_symbols = 'fancy'
+   "vim有一个状态栏 加上powline则有两个状态栏
+   set laststatus=2
+   set guifont=PowerlineSymbols\ for\ Powerline
+   set nocompatible
+   set t_Co=256
 
 filetype plugin indent on     " required!
 
