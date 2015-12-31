@@ -20,6 +20,8 @@ noremap <S-j> :tabpre<CR>
 set pastetoggle=<F11>
 noremap <F5> :NERDTreeToggle<CR>
 
+noremap <F4> :TlistToggle<CR>
+
 "Smart way to move between windows 分屏窗口移动
 "则可以用<C-h,j,k,l>切换到上下左右的窗口中去,就像:
 map <C-j> <C-W>j
@@ -53,6 +55,9 @@ set ruler
 
 "突出显示当前行
 set cursorline              
+
+"检索时高亮显示匹配项
+set hls 
 
 " 自动缩进
 set autoindent
@@ -88,6 +93,11 @@ set ignorecase
 "设置取消备份 禁止临时文件生成
 set nobackup
 set noswapfile
+
+set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离
+
+set tags=tags;
+set autochdir
 
 "检测文件类型
 filetype on

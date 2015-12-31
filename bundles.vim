@@ -37,6 +37,7 @@ Bundle 'scrooloose/Syntastic'
     let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 " 代码自动补全
+
 Bundle 'Valloric/YouCompleteMe'
     "youcompleteme  默认tab  s-tab 和自动补全冲突
     let g:ycm_key_list_select_completion=['<C-n>']
@@ -47,8 +48,29 @@ Bundle 'Valloric/YouCompleteMe'
     let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
     let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
     let g:ycm_seed_identifiers_with_syntax = 1 "语言关键字补全
-    
+    let mapleader = ','
+    "按,jd 会跳转到定义
+    nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 Bundle 'taglist.vim'
+  let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
+  let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
+  let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
+     "使用帮助
+     " <CR>          跳到光标下tag所定义的位置，用鼠标双击此tag功能也一样
+     " o             在一个新打开的窗口中显示光标下tag
+     " <Space>       显示光标下tag的原型定义
+     " u             更新taglist窗口中的tag
+     " s             更改排序方式，在按名字排序和按出现顺序排序间切换
+     " x             taglist窗口放大和缩小，方便查看较长的tag
+     " +             打开一个折叠，同zo
+     " -             将tag折叠起来，同zc
+     " *             打开所有的折叠，同zR
+     " =             将所有tag折叠起来，同zM
+     " [[            跳到前一个文件
+     " ]]            跳到后一个文件
+     " q             关闭taglist窗口
+     " <F1>          显示帮助
 Bundle 'SuperTab'
 Bundle 'vimwiki'
 Bundle 'winmanager'
@@ -57,12 +79,11 @@ Bundle 'The-NERD-tree'
 
 "PowerLine插件 状态栏增强展示
 Bundle 'Lokaltog/vim-powerline'
-   let g:Powerline_symbols = 'fancy'
    "vim有一个状态栏 加上powline则有两个状态栏
+   ":PowerlineClearCache
+   let g:Powerline_symbols = 'fancy'
    set laststatus=2
-   set guifont=PowerlineSymbols\ for\ Powerline
    set nocompatible
-   set t_Co=256
 
 filetype plugin indent on     " required!
 
